@@ -97,14 +97,7 @@ public class War extends TwoPlayerGame {
       hand2.add(War.cDraw());
     }
 
-    // System.out.println("%s's hand contains:");
-    // for(int i = 0; i<hand1.size();i++){
-    // System.out.println(hand1.get(i).getNum() + " of " +hand1.get(i).getSuit());
-    // }
-    // System.out.println("%s's hand contains:");
-    // for(int i = 0; i<hand2.size();i++){
-    // System.out.println(hand2.get(i).getNum() + " of " +hand2.get(i).getSuit());
-    // }
+   
     for (int i = 1; hand1.size() > 0 && hand2.size() > 0&&i<12; i++) {
       System.out.println("Round " + i + "\n");
     if(i%2==0){
