@@ -1,10 +1,14 @@
+/**
+ * @author DergoDawg 
+ */
 import java.util.*;
 import java.io.*;
 
 public class War extends TwoPlayerGame {
   private Deck warDeck;
 
-  
+  //remember to add 3/4 redraws per game, and a double power mechanic
+ 
 
   
   public  void shuffCheck(ArrayList<Card> hand, ArrayList<Card> disc) {
@@ -59,28 +63,11 @@ public class War extends TwoPlayerGame {
       }
     }
   }
-  public void redraw() {
-    Scanner scan = new Scanner(System.in);
-    boolean playInput = false;
-    String playCheck = "Yes";
-    if (scan.nextLine().toLowerCase().equals(playCheck)) {
 
-      playInput = true;
-    }
-    while (playInput == false) {
-      System.out.println("Please input D as your command");
-      if (scan.nextLine().toLowerCase().equals(playCheck)) {
-        playInput = true;
-      }
-    }
-  }
   // JC Note: removed static
   // JC Note: changed start to playGame()
   public void playGame() {
     Scanner scan = new Scanner(System.in);
-    int d1 = 4; 
-    int d2 = 4;
-    String response = "";
     ArrayList<Card> spoils = new ArrayList();
     ArrayList<Card> side1 = new ArrayList();
     ArrayList<Card> side2 = new ArrayList();
@@ -97,140 +84,30 @@ public class War extends TwoPlayerGame {
       hand2.add(War.cDraw());
     }
 
-   
+    // System.out.println("%s's hand contains:");
+    // for(int i = 0; i<hand1.size();i++){
+    // System.out.println(hand1.get(i).getNum() + " of " +hand1.get(i).getSuit());
+    // }
+    // System.out.println("%s's hand contains:");
+    // for(int i = 0; i<hand2.size();i++){
+    // System.out.println(hand2.get(i).getNum() + " of " +hand2.get(i).getSuit());
+    // }
     for (int i = 1; hand1.size() > 0 && hand2.size() > 0&&i<12; i++) {
       System.out.println("Round " + i + "\n");
-    if(i%2==0){
+
       System.out.printf("\n%s,type D to play your card\n",getPlayer1().getName());
       play();
       m(hand1, spoils);
       shuffCheck(hand1, disc1);
       System.out.printf("%s played ",getPlayer1().getName());
       System.out.println(spoils.get(0).getName());
-      if (d1>0){
-      System.out.println("You have " + d1 + " redraw(s), would you like to swap this card for a random card from the deck? (Yes/No)");
-      response = scan.nextLine().toLowerCase(); 
-      if(response == "yes"){
-        spoils.set(0,War.cDraw());
-        System.out.println("You drew a " + spoils.get(0).getName());
-        d1--;
-      }
-        else if (response == "no"){
-          System.out.println("You retained your current card?");
-        }
-        else{
-          while(response!="yes"&&response!="no"){
-            System.out.println("Please enter a valid response");
-            response = scan.nextLine().toLowerCase();
-          }
-          if(response == "yes"){
-        spoils.set(0,War.cDraw());
-        System.out.println("You drew a " + spoils.get(0).getName());
-        d1--;
-      }
-        else if (response == "no"){
-          System.out.println("You retained your current card?");
-        }
-        }
-      }
-      System.out.printf("\n%s,type D to play your card\n",getPlayer2().getName());
+      System.out.printf("%s,type D to play your card\n",getPlayer2().getName());
       play();
       m(hand2, spoils);
       shuffCheck(hand2, disc2);
       System.out.printf("%s played ",getPlayer2().getName());
       System.out.println(spoils.get(1).getName());
-        System.out.println("You have " + d2 + " redraw(s), would you like to swap this card for a random card from the deck? (Yes/No)");
-      response = scan.nextLine().toLowerCase(); 
-      if (d2>0){
-      if(response == "yes"){
-        spoils.set(1,War.cDraw());
-        System.out.println("You drew a " + spoils.get(1).getName());
-        d2--;
-      }
-        else if (response == "no"){
-          System.out.println("You retained your current card?");
-        }
-        else{
-          while(response!="yes"&&response!="no"){
-            System.out.println("Please enter a valid response");
-            response = scan.nextLine().toLowerCase();
-          }
-          if(response == "yes"){
-        spoils.set(1,War.cDraw());
-        System.out.println("You drew a " + spoils.get(1).getName());
-        d2--;
-      }
-        else if (response == "no"){
-          System.out.println("You retained your current card?");
-        }
-        }
-      }
-    }
-      else{
-        System.out.printf("%s,type D to play your card\n",getPlayer2().getName());
-      play();
-      m(hand2, spoils);
-      shuffCheck(hand2, disc2);
-      System.out.printf("%s played ",getPlayer2().getName());
-      System.out.println(spoils.get(1).getName());
-         if (d2>0){
-      if(response == "yes"){
-        spoils.set(1,War.cDraw());
-        System.out.println("You drew a " + spoils.get(1).getName());
-        d2--;
-      }
-        else if (response == "no"){
-          System.out.println("You retained your current card?");
-        }
-        else{
-          while(response!="yes"&&response!="no"){
-            System.out.println("Please enter a valid response");
-            response = scan.nextLine().toLowerCase();
-          }
-          if(response == "yes"){
-        spoils.set(1,War.cDraw());
-        System.out.println("You drew a " + spoils.get(1).getName());
-        d2--;
-      }
-        else if (response == "no"){
-          System.out.println("You retained your current card?");
-        }
-        }
-      }
-    
-        System.out.printf("\n%s,type D to play your card\n",getPlayer1().getName());
-      play();
-      m(hand1, spoils);
-      shuffCheck(hand1, disc1);
-      System.out.printf("%s played ",getPlayer1().getName());
-      System.out.println(spoils.get(0).getName());
-        if (d1>0){
-      System.out.println("You have " + d1 + " redraw(s), would you like to swap this card for a random card from the deck? (Yes/No)");
-      response = scan.nextLine().toLowerCase(); 
-      if(response == "yes"){
-        spoils.set(0,War.cDraw());
-        System.out.println("You drew a " + spoils.get(0).getName());
-        d1--;
-      }
-        else if (response == "no"){
-          System.out.println("You retained your current card?");
-        }
-        else{
-          while(response!="yes"&&response!="no"){
-            System.out.println("Please enter a valid response");
-            response = scan.nextLine().toLowerCase();
-          }
-          if(response == "yes"){
-        spoils.set(0,War.cDraw());
-        System.out.println("You drew a " + spoils.get(0).getName());
-        d1--;
-      }
-        else if (response == "no"){
-          System.out.println("You retained your current card?");
-        }
-        }
-      }
-      }
+
       if (tVal(spoils.get(0)) == tVal(spoils.get(1))) {
         
         int points1 = 0;
