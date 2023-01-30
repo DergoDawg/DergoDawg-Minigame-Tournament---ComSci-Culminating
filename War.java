@@ -7,7 +7,7 @@ import java.io.*;
 public class War extends TwoPlayerGame {
   private Deck warDeck;
 
-  //remember to add 3/4 redraws per game, and a double power mechanic
+ 
  
 
   
@@ -47,7 +47,7 @@ public class War extends TwoPlayerGame {
     }
   }
 
-  // JC Note: removed static
+ 
   public void play() {
     Scanner scan = new Scanner(System.in);
     boolean playInput = false;
@@ -64,8 +64,7 @@ public class War extends TwoPlayerGame {
     }
   }
 
-  // JC Note: removed static
-  // JC Note: changed start to playGame()
+  
   public void playGame() {
     Scanner scan = new Scanner(System.in);
     ArrayList<Card> spoils = new ArrayList();
@@ -84,14 +83,7 @@ public class War extends TwoPlayerGame {
       hand2.add(War.cDraw());
     }
 
-    // System.out.println("%s's hand contains:");
-    // for(int i = 0; i<hand1.size();i++){
-    // System.out.println(hand1.get(i).getNum() + " of " +hand1.get(i).getSuit());
-    // }
-    // System.out.println("%s's hand contains:");
-    // for(int i = 0; i<hand2.size();i++){
-    // System.out.println(hand2.get(i).getNum() + " of " +hand2.get(i).getSuit());
-    // }
+   
     for (int i = 1; hand1.size() > 0 && hand2.size() > 0&&i<12; i++) {
       System.out.println("Round " + i + "\n");
 
