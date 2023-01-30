@@ -1,5 +1,5 @@
 /**
- * @author user7455602
+ * @author user7455602 & DergoDawg
  */
 import java.util.Scanner;
 import java.util.*;
@@ -25,9 +25,12 @@ class Main {
     System.out.println("Enter name for player 2:");
     input = scanner.nextLine();
     TournamentPlayer player2 = new TournamentPlayer(input);
-
+    
+    System.out.println("Would you like you like the game order to be the regular order, or would you like randomize it?");
+    input = scanner.nextLine().toLowerCase();
+    
     //create a tournament with the players and play all the games
-    Tournament myTournament = new Tournament(player1, player2);
+    Tournament myTournament = new Tournament(player1, player2,input);
     myTournament.playGames();
 
     // the tounament is over, output the scores and the results
