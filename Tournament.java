@@ -1,8 +1,8 @@
 /**
- * @author user7455602
+ * @author user7455602 & DergoDawg
  */
 
-import java.util.ArrayList;
+import java.util.*;
 
 // The Tournament class accepts 2 tournament players and 
 // add games to a list to be played
@@ -10,28 +10,38 @@ import java.util.ArrayList;
 public class Tournament{
   TournamentPlayer player1;
   TournamentPlayer player2;
-  
+  String input;
   ArrayList<Game> games;
 
-  public Tournament(TournamentPlayer player1, TournamentPlayer player2){
+  public Tournament(TournamentPlayer player1, TournamentPlayer player2, String input){
     // set the players for the tournament
+    
     this.player1 = player1;
     this.player2 = player2;
-
+    this.input = input;
+     games = new ArrayList<Game>();
+    System.out.print(input);
+    
+    if (input.equals("random")){
+    
     // create a list to hold the games
-    games = new ArrayList<Game>();
+   
 
     // create and add each game to this list
-    // this is the order the games will be played
     
     games.add(new Trivia(player1, player2));
     games.add(new RockPaperScissors(player1, player2));
-    //games.add(new TicTacToe(player1, player2));
     games.add(new Blackjack(player1, player2));
    
-   // games.add(new War(player1, player2));
-
-
+    games.add(new War(player1, player2));
+  Collections.shuffle(games);
+    }
+    else{
+    games.add(new Trivia(player1, player2));
+    games.add(new RockPaperScissors(player1, player2));
+    games.add(new Blackjack(player1, player2));
+    games.add(new War(player1, player2));
+    }
   }
   
   public void playGames(){
