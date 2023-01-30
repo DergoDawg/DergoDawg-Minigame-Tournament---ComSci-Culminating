@@ -20,7 +20,6 @@ public class Tournament{
     this.player2 = player2;
     this.input = input;
      games = new ArrayList<Game>();
-    System.out.print(input);
     
     if (input.equals("random")){
     
