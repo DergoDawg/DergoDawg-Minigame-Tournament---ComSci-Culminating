@@ -71,7 +71,7 @@ public class Blackjack extends TwoPlayerGame {
   }
 
   public void empty(ArrayList<Card> hand) {
-    for (Card x: hand) {
+    for (int i = 0; i<hand.size(); i++) {
       hand.remove(0);
     }
   }
