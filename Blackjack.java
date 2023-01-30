@@ -134,6 +134,9 @@ public class Blackjack extends TwoPlayerGame {
     System.out.printf("%s & %s play Blackjack!\n\n",
         getPlayer1().getName(), getPlayer2().getName());
     for (int i = 0; i < 3 && p1.get(0) > 0 && p2.get(0) > 0; i++) {
+      empty(hand1);
+      empty(hand2);
+      empty(dealer);
       System.out.printf("%s, you have " + p1.get(0) + " points. Make your bet!\n", getPlayer1().getName());
       bet(p1);
       System.out.printf("%s, you have " + p2.get(0) + " points. Make your bet!\n", getPlayer2().getName());
